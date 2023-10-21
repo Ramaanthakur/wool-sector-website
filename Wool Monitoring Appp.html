@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:5500/indexx.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>&lt; lang="en"&gt;
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wool Monitoring App</title>
+    <link rel="stylesheet" href="./Wool Monitoring Appp_files/style.css">
+
+&lt;&gt;
+    <header>
+        <h1>Wool Monitoring Website</h1>
+    </header>
+    <main>
+        <section id=" wool farms">
+            <h2> Wool Farms</h2>
+            <ul id="wool farm-list">
+                <!-- Farms will be added dynamically here -->
+            </ul>
+            <form id="add-farm-form">
+                <input type="text" id="farm-name" placeholder="Farm Name" required="">
+                <button type="button" onclick="addwoolFarm()">Add wool Farm</button>
+            </form>
+        </section>
+        <section id="wool-data">
+            <h2>Wool Data</h2>
+            <canvas id="wool-chart" width="400" height="200"></canvas>
+        </section>
+        <section id="weather">
+            <h2>Weather</h2>
+            <p id="temperature"> temperature(in celcius) For Wool.</p>
+        </section>
+    </main>
+    <section id=" wool marketing-price">
+        <h2> wool Marketing Price</h2>
+        <p id="price-info">view marketing price</p>
+    </section>
+    <a href="https://weatherwidget.io/">*weather for wool sector*</a>
+    <header>
+        <h1>Wool Market Information</h1>
+    </header>
+    <main>
+        <section id="market-info">
+            <h2>Real-Time Wool Data Market Information</h2>
+            <div id="market-data">
+                <p> Wool market Data.</p>
+            </div>
+        </section>
+    </main>
+
+    
+
+
+    
+
+    <h1>Live Location</h1>
+    <p>Latitude. <span id="latitude"></span></p>
+    <p>Longitude. <span id="longitude"></span></p>
+
+    <script>
+        function updateLocation(position) {
+            const latitudeElement = document.getElementById("latitude");
+            const longitudeElement = document.getElementById("longitude");
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            latitudeElement.textContent = latitude;
+            longitudeElement.textContent = longitude;
+        }
+
+        function handleLocationError(error) {
+            console.error("Error getting location:", error.message);
+        }
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.watchPosition(updateLocation, handleLocationError);
+        } else {
+            console.error("Geolocation is not available in this browser.");
+        }
+    </script>
+
+    
+ 
+        
+    
+
+
+    <script src="./Wool Monitoring Appp_files/scrit.js.download"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
